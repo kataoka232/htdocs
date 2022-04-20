@@ -13,7 +13,7 @@ if ($result > 0) {
 } else {
 	$stmt = $pdo->prepare('update courseid set name=? where id=?');
 	$stmt->bindValue (':name',$_REQUEST['name'],PDO::PARAM_STR);
-	$tsmt->bindValue (':id',$_REQUEST['id'],PDO::PARAM_INT);
+	$stmt->bindValue (':id',$_REQUEST['id'],PDO::PARAM_INT);
 	$stmt->execute();
 	echo '登録完了しました。';
 } 
