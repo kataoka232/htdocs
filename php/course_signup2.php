@@ -7,17 +7,25 @@ $result = $sql->fetch();
 
 if (empty($_REQUEST['name'])) {
 	echo 'コース名を入力してください';
+	echo '<br>';
+	echo '<br>';
+	echo '<input type="button" onclick="history.back()" value="登録画面に戻る">';
+	echo "\t";
 } else
 if ($result > 0) {
 	echo 'すでに登録されています';
+	echo '<br>';
+	echo '<input type="button" onclick="history.back()" value="登録画面に戻る">';
+	echo "\t";
 } else {
-	$stmt = $pdo->prepare('update courseid set name=? where id=?');
+	$stmt = $pdo->prepare('insert into courseid (name) values (:name)');
 	$stmt->bindValue (':name',$_REQUEST['name'],PDO::PARAM_STR);
-	$stmt->bindValue (':id',$_REQUEST['id'],PDO::PARAM_INT);
 	$stmt->execute();
 	echo '登録完了しました。';
+	echo '<br>';
+	echo '<br>';
+	echo '<input type="button" onclick="location.href=\'./course_list.php\'" value="リストに戻る">';
 } 
 ?>
-<br>
-<br>
-<input type="button" onclick="location.href='./course_list.php'" value="リストに戻る">
+
+
