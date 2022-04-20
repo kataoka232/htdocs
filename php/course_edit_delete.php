@@ -7,9 +7,10 @@ foreach ($sql as $course) {
 	echo '<form action="course_edit_delete2.php" method="post">';
 	echo '<input type="hidden" name="id" value="',$course['id'],'">';
 	echo '<input type="hidden" name="name" value="',$course['name'],'">';
-	echo $course['id'];
+	echo 'コースID：',$course['id'];
+	echo '<br>';
 	echo "\t";
-	echo $course['name'];
+	echo 'コース名：',$course['name'];
 	echo '<br>';
 	echo '<br>';
 	echo '<input type="button" onclick="history.back()" value="戻る">';

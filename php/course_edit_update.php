@@ -1,25 +1,22 @@
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
-$sql = $pdo->prepare ('select * from courseid where name=?');
-$bind = $sql->bindValue (':name',$_REQUEST['name'],PDO::PARAM_STR);
-$bind->execute();
-//$resuld = $bind->fetch();
-
-$sql=$pdo->prepare ('update courseid set name=? where id=?');
-$sql->bindValue (':name',$_REQUEST['name'],PDO::PARAM_STR);
-$sql->bindValue (':id',$_REQUEST['id'],PDO::PARAM_INT);
+$sql = $pdo->prepare ('select * from courseid where name=:name');
+$sql->bindValue(':name',$_REQUEST['name'],PDO::PARAM_STR);
+$sql->execute();
+$result = $sql->fetch();
 
 if (empty($_REQUEST['name'] )) {
 	echo 'コース名を入力してください。';
 } else
-if (empty($bind->fetchAll() )) {
-	if (isset($_REQUEST['id'])) {
-		$sql->execute()
-		echo '更新しました。';
-	} else {
-	echo '更新できませんでした。';
-	}
-}
+if ($result > 0) {
+	echo 'すでに登録されています';
+} else {
+	$stmt = $pdo->prepare('update courseid set name=:name where id=:id');
+	$stmt->bindValue (':name',$_REQUEST['name'],PDO::PARAM_STR);
+	$stmt->bindValue (':id',$_REQUEST['id'],PDO::PARAM_INT);
+	$stmt->execute();
+	echo '更新しました。';
+} 
 ?>
 <br>
 <br>
