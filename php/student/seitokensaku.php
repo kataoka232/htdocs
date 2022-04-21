@@ -90,11 +90,11 @@
 	
 	?>
 	</select>
-	</tr></th>
+	</th></tr>
 
-	<tr><th>
-	<td><input type="submit" value="検索"></td>
-	</tr></th>
+	<tr><th></th>
+		<td><input type="submit" value="検索"></td>
+	</tr>
 
 </form>
 <?php
@@ -102,6 +102,7 @@
 //error_reporting(0);
 
 $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
+
 if(!empty($_REQUEST["id"]))
 	{
 		$select=$pdo->prepare("select * from student where studentid=:studentid");
@@ -126,7 +127,7 @@ if(!empty($_REQUEST["id"]))
 
 $result=$select->fetchAll();
 //var_dump($_REQUEST["course"]);
-foreach( $result as $row)
+/*foreach( $result as $row)
 	{
 		echo"<tr>";	
 		echo "<td>",$row['name'],"</td>";
@@ -142,6 +143,25 @@ foreach( $result as $row)
 		echo "</tr>";
 
 	
+	}*/
+
+foreach( $result as $row)
+	{
+		echo <<<std
+		<tr>	
+		<td>$row[name]</td>
+		<td>$row[furigananame]</td>
+		<td>$row[address]</td>
+		<td>$row[tel]</td>
+		<td>$row[emargencycontact]</td>
+		<td>$row[academicyear]</td>
+		<td>$row[sex]:</td>
+		<td>$row[birthday]</td>
+		<td>$row[studentid]:</td>
+		<td>$row[course_id]</td>
+		</tr>
+
+		std;
 	}
 
 //echo print_r($result,true);
