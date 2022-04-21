@@ -11,10 +11,18 @@ foreach ($pdo->query('select * from account') as $row){
      echo '<td>',$row['password'],'</td>';
 }
      echo '<td>';
-     echo '<a href="delete_flg-output.php?id=', $row['id'],'">削除</a>';
+     echo '<a href="delete_flg2.php?id=', $row['id'],'">削除</a>';
      echo '</td>';
      echo '</tr>';
 }
+
+     if(){
+     $row['delete_flg']==1;
+    	echo '削除に成功しました。';
+} else {
+	echo '削除に失敗しました。';
+     }
+
 ?>
 </table>
 <?php require '../footer.php';?>
