@@ -4,10 +4,15 @@
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8', 'root', '');
 $sql=$pdo->prepare('select * from teacher where name=?');
 $sql->execute([$_REQUEST['keyword']]);
-$teacher_list = $pdo->query('select * from teacher');
-$sex_list = $pdo->query('select * from sex');
-$domain_list=$pdo->query('select * from subject');
-foreach ($sql as $teacher) {
+$teacher_obj  = $pdo->query('select * from teacher');
+$sex_obj      = $pdo->query('select * from sex');
+$domain_obj   = $pdo->query('select * from subject');
+
+$teacher_list = $teacher_obj->fetchAll(PDO::FETCH_ASSOC);
+$sex_list     = $sex_obj->fetchAll(PDO::FETCH_ASSOC);
+$domain_list  = $domain_obj->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($teacher_list as $teacher) {
     echo '<tr>';
     echo '<td>',$teacher['teacherid'] ,'</td>';
     echo '<td>',$teacher['name'] ,'</td>';
@@ -16,13 +21,14 @@ foreach ($sql as $teacher) {
     echo '<td>',$teacher['tel'] ,'</td>';
     echo '<td>',$teacher['emergencycontact'] ,'</td>';
     echo '<td>',$teacher['age'] ,'</td>';
+    
+    
 	foreach ($sex_list as $sex) {
 		if ($teacher['sex']==$sex['id']) {
 		    echo '<td>',$sex['name'] ,'</td>';
 		}
-	}	
-    echo '<td>',$teacher['birthday'] ,'</td>';
-    echo '<td>',$teacher['domain'] ,'</td>';
+	}
+	echo '<td>',$teacher['birthday'],'</td>';
     foreach ($domain_list as $subject) {
         if ($teacher['domain']==$subject['id']) {
             echo '<td>',$subject['name'],'</td>';
