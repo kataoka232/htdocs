@@ -1,13 +1,43 @@
 <p>コース検索</p>
-<form action="" method="post" class="js-post_include">
-コースID：&#009;
-<input type="text" name="id">
-<input type="hidden" name="c_id" value="%
-<br>
-コース名：&#009;<input type="text" name="name">
-<br>
+<form action="course_search.php" method="post">
+コースID：<input type="text" name="id">
+<input type="hidden" name="c_id" value="%">
+コース名：<input type="text" name="name">
+<input type="hidden" name="c_name" value="%">
 <input type="submit" value="検索">
-</form>
+</form><br>
+
+<table>
+<tr><th>コースID</th><th>コース名</th></tr>
+<?php
+$pdo = new PDO ('mysql:host=localhost;dbname=juku;charset=utf8','root');
+if (!empty($_REQUEST['id'])) 
+{
+	$sql = $pdo->prepare('select * from courseid where id like :id');
+	$sql->bindValue(':id',$_REQUEST['id'],PDO::PARAM_INT);
+	$sql->execute();
+} else if (!empty($_REQUEST['name'])) 
+{
+	$sql = $pdo->prepare('select * from courseid where name like :name');
+	$sql->bindValue(':name','%'.$_REQUEST['name'].'%',PDO::PARAM_STR);
+	$sql->execute();
+} 
+if (empty($_REQUEST['id']) && empty($_REQUEST['name'] )) 
+{
+	$sql = $pdo->prepare('select * from courseid');
+	$sql->execute();
+}
+
+foreach ($sql as $course) {
+	echo '<tr>';
+	echo '<td>',$course['id'],'</td>';
+	echo "\t";
+	echo '<td>',$course['name'],'</td>';
+	echo '</tr>';
+	echo "\n";
+}
+?>
+</table>
 <br>
 <br>
 <input type="button" onclick="location.href='./course_list.php'" value="リストに戻る">
