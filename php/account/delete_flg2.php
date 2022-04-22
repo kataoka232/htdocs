@@ -1,7 +1,7 @@
 <?php require '../header.php'; ?>
 <table>
 <?php
-$pdo = new PDO('mysql:charset=UTF8;dbname=juku;host=localhost', 'teacher', 'password');
+$pdo = new PDO('mysql:charset=UTF8;dbname=juku;host=localhost', 'root', '');
 
 foreach ($pdo->query('select * from account') as $row){
      if($row['delete_flg']==0){
