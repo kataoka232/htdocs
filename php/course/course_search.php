@@ -1,9 +1,7 @@
 <p>コース検索</p>
 <form action="course_search.php" method="post">
 コースID：<input type="text" name="id">
-<input type="hidden" name="c_id" value="%">
 コース名：<input type="text" name="name">
-<input type="hidden" name="c_name" value="%">
 <input type="submit" value="検索">
 </form><br>
 
@@ -21,7 +19,14 @@ if (!empty($_REQUEST['id']))
 	$sql = $pdo->prepare('select * from courseid where name like :name');
 	$sql->bindValue(':name','%'.$_REQUEST['name'].'%',PDO::PARAM_STR);
 	$sql->execute();
-} 
+}
+if (!empty($_REQUEST['id']) && !empty($_REQUEST['name'] )) 
+{
+	$sql = $pdo->prepare('select * from courseid where id like :id and name like :name');
+	$sql->bindValue(':id',$_REQUEST['id'],PDO::PARAM_INT);
+	$sql->bindvalue(':name','%'.$_REQUEST['name'].'%',PDO::PARAM_STR);
+	$sql->execute();
+}
 if (empty($_REQUEST['id']) && empty($_REQUEST['name'] )) 
 {
 	$sql = $pdo->prepare('select * from courseid');

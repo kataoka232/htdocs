@@ -10,13 +10,12 @@ if (empty($_REQUEST['name'])) {
 	echo '<br>';
 	echo '<br>';
 	echo '<input type="button" onclick="history.back()" value="登録画面に戻る">';
-	echo "\t";
 } else
-if ($result > 0) {
+if (!empty($result)) {
 	echo 'すでに登録されています';
 	echo '<br>';
+	echo '<br>';
 	echo '<input type="button" onclick="history.back()" value="登録画面に戻る">';
-	echo "\t";
 } else {
 	$stmt = $pdo->prepare('insert into courseid (name) values (:name)');
 	$stmt->bindValue (':name',$_REQUEST['name'],PDO::PARAM_STR);
@@ -27,5 +26,3 @@ if ($result > 0) {
 	echo '<input type="button" onclick="location.href=\'./course_list.php\'" value="リストに戻る">';
 } 
 ?>
-
-

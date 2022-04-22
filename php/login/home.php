@@ -1,3 +1,4 @@
+<?php require 'menu.php'; ?>
 <?php
 unset($_SESSION['user']);
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
@@ -14,3 +15,4 @@ if (isset($_SESSION['user'])){
 	echo 'パスワードが違うかユーザー登録されていません。';
 }
 ?>
+<?php require 'footer.php'; ?>

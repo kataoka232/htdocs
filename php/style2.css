@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body {
+	font-family: sans-serif;
+	line-height: 1.7;
+}
+.menu {
+	float: left;
+	padding: 10px;
+	width: 15%;
+	margin: 0 auto;
+	background-color: #ffce5b;
+	list-style: none;
+	display: grid;
+	grid-template-colums: lfr lfr lfr;
+	grid-template-rows: 100px 100px;
+	grid-gap: 10px;
+}
+li {
+	text-again: center;
+	list-style-position: inside;
+}
+a {
+	dispray: block;
+	text-decoration: none;
+	color: brack;
+}
+.main {
+	width: 85%;
+	padding: 10px;
+}
