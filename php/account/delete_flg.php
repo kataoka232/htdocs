@@ -11,7 +11,7 @@ foreach ($pdo->query('select * from account') as $row){
      echo '<td>',$row['password'],'</td>';
 }
      echo '<td>';
-     echo '<a href="delete-output.php?id=', $row['id'],'">削除</a>';
+     //echo '<a href="delete-output.php?id=', $row['id'],'">削除</a>';
      echo '</td>';
      echo '</tr>';
 }

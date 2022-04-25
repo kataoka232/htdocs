@@ -2,7 +2,7 @@
 <?php error_reporting(E_NOTICE); ?>
 キーワードを入力してください。
 <html>
-<form action="itiran&kensaku-input2.php" method="post">
+<form action="kensaku2.php" method="post">
 <input type="text" name="keyword">
 <input type="submit" value="検索"><br>
 
