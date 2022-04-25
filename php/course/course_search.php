@@ -1,4 +1,6 @@
-<p>コース検索</p>
+<?php require '../menu.php'; ?>
+
+<h1>コース検索</h1>
 <form action="course_search.php" method="post">
 コースID：<input type="text" name="id">
 コース名：<input type="text" name="name">

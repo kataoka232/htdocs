@@ -1,4 +1,6 @@
-<p>コース新規登録</p>
+<?php require '../menu.php'; ?>
+
+<h1>コース新規登録</h1>
 <form action="course_signup2.php" method="post">
 コース名：<input type="text" name="name">
 <br>

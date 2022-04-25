@@ -1,3 +1,5 @@
+<?php require '../menu.php'; ?>
+
 <p>講師新規登録</p>
 <form action='tourokuoutput.php' method='post'>
 <br>名前<input type='text' name='name'></br>

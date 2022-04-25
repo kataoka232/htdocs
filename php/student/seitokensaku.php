@@ -1,4 +1,5 @@
-﻿
+﻿<?php require '../menu.php'; ?>
+
 <table>
 <tr><th>生徒検索</th></tr>
 

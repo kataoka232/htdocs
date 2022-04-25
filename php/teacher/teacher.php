@@ -1,3 +1,5 @@
+<?php require '../menu.php'; ?>
+
 <p>講師検索</p>
 <form action='teacher1-out.php' method='post'>
 <br>名前<input type='text' name='name'></br>

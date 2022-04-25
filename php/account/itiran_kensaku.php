@@ -1,4 +1,4 @@
-﻿<?php require '../header.php'; ?>
+﻿<?php require '../menu.php'; ?>
 IDを入力してください。
 <html>
 <form action="itiran_kensaku2.php" method="post">
