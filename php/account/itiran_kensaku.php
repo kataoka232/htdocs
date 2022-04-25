@@ -1,7 +1,7 @@
 ﻿<?php require '../header.php'; ?>
 IDを入力してください。
 <html>
-<form action="itiran_kensaku2.php" method="post">
+<form action="itiran_kensaku.php" method="post">
 <input type="text" name="id"   value="<?php if( !empty($_POST['id']) ){ echo $_POST['id'];}?>"><br>
 アカウント名を入力してください。<br>
 <input type="text" name="name" value="<?php if( !empty($_POST['name']) ){ echo $_POST['name'];}?>"><br>
