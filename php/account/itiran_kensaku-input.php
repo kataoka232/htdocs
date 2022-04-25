@@ -1,6 +1,6 @@
 ﻿<?php require '../header.php'; ?>
 キーワードを入力してください。
-<form action="itiran&kensaku-output.php" method="post">
+<form action="itiran_kensaku-output.php" method="post">
 <input type="text" name="keyword">
 <input type="submit" value="検索">
 

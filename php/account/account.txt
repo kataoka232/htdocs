@@ -1,0 +1,45 @@
+実装機能一覧
+
+display.php
+・データベース内にあるデータを一覧できる。
+
+delete_flg.php
+・データべース内のdelete_flgの数値を0と1を使って
+　表示上消しているように見せる。
+　（データベース上は消えていない。）
+
+kensaku-input.php
+kensaku-output.php
+・名前の一部を入力するとアカウントを検索できる。
+　（IDでは検索できない。）
+　inoutとoutputを2つ使っている。
+
+kensaku2.php
+・kensakuのinputとoutputを一つにまとめた機能。
+　機能は変わらない。
+
+itiran_kensaku-input.php
+itiran_kensaku-output.php
+・最初からアカウント一覧を表示させている。
+　その他の機能はkensakuと同じ。
+
+itiran_kensaku2.php
+・最初からアカウント一覧を表示させている。
+　検索をIDと名前の一部から検索できる。
+　何も入れずに検索ボタンを押したらアカウント一覧が表示される。
+　IDとアカウント両方入れたらそれに合致するアカウントが表示される。
+
+insert-input.php
+insert-output.php
+・アカウントを追加できる。
+　パスワードは半角英数に対応している。
+
+insert.php
+・insertのinputとoutputを一つにまとめた機能。
+　機能は変わらない。
+
+　
+
+
+
+
