@@ -58,11 +58,15 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	$select=$pdo->prepare("select * from sex");
 	$select->execute();
 	$result=$select->fetchAll();
-	var_dump($result);
+	//var_dump($result);
 	echo "<option value=''></option>";	
 	foreach( $result as $row)
 	{	
-		echo "<option value='".$row['sexid']."'>".$row['name']."</option>";
+		if($_REQUEST['sex']==$row["sexid"]){
+		echo "<option value='".$row['sexid']."'selected>".$row['name']."</option>";
+		}else{
+		echo "<option value='".$row['sexid']."'>".$row['name']."</option>";}
+
 	}
 	
 	?>
@@ -93,14 +97,16 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	<select name="course">
 	<?php
 	$select=$pdo->prepare("SELECT * FROM courseid");
-	$select->execute();
+	$select->execute();//sql文実行
 	$result=$select->fetchAll();
-	var_dump($result);
 	echo "<option value=''></option>";	
 	foreach( $result as $row)
 	{	
-		if("<option value='".$row['zyukouid']."'selected>"==$row['zyukouid']){
-		echo "<option value='".$row['zyukouid']."'>".$row['name']."</option>";}
+		if($_REQUEST['course']==$row['zyukouid']){
+		echo "<option value='".$row['zyukouid']."'selected>".$row['name']."</option>";
+		}else{
+		echo "<option value='".$row['zyukouid']."'>".$row['name']."</option>";
+		}
                 
 	}
 	
@@ -175,6 +181,14 @@ $sql = $pdo->prepare($sql);
 $sql->execute($bind);
 $result=$sql->fetchAll();
 
+$sex=$pdo->prepare("select * from sex");
+	$sex->execute();
+	$sexresult=$sex->fetchAll();
+
+$course=$pdo->prepare("SELECT * FROM courseid");//オブジェクト作成
+	$course->execute();//sql文実行
+	$courseresult=$course->fetchAll();
+
 
 foreach( $result as $row)
 	{
@@ -186,13 +200,26 @@ foreach( $result as $row)
 		<td>$row[tel]</td>
 		<td>$row[emargencycontact]</td>
 		<td>$row[academicyear]</td>
-		<td>$row[sex]:</td>
 		<td>$row[birthday]</td>
-		<td>$row[studentid]:</td>
-		<td>$row[course_id]</td>
+		
 		</tr>
 
 		std;
+
+		
+		foreach( $sexresult as $srow){
+			if($row["sex"]==$srow["sexid"]){
+			echo '<td>', $srow["name"] ,'</td>';
+			}
+		}
+		
+		foreach( $courseresult as $crow){
+			if($row["course_id"]==$crow["zyukouid"]){
+			echo '<td>', $crow["name"] ,'</td>';
+			}
+		}
+		
+
 	}
 
 //echo print_r($result,true);
