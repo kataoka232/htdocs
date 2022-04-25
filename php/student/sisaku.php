@@ -102,10 +102,10 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	echo "<option value=''></option>";	
 	foreach( $result as $row)
 	{	
-		if($_REQUEST['course']==$row['zyukouid']){
-		echo "<option value='".$row['zyukouid']."'selected>".$row['name']."</option>";
+		if($_REQUEST['course']==$row['id']){
+		echo "<option value='".$row['id']."'selected>".$row['name']."</option>";
 		}else{
-		echo "<option value='".$row['zyukouid']."'>".$row['name']."</option>";
+		echo "<option value='".$row['id']."'>".$row['name']."</option>";
 		}
                 
 	}
@@ -214,7 +214,7 @@ foreach( $result as $row)
 		}
 		
 		foreach( $courseresult as $crow){
-			if($row["course_id"]==$crow["zyukouid"]){
+			if($row["course_id"]==$crow["id"]){
 			echo '<td>', $crow["name"] ,'</td>';
 			}
 		}
