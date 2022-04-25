@@ -1,5 +1,5 @@
 <p>講師検索</p>
-<form action='2.php' method='post'>
+<form action='fukusu.php' method='post'>
 <br>名前<input type='text' name='name'></br>
 <br>フリガナ<input type='text' name='furigananame'></br>
 <br>住所<input type='text'  name='address'></br>
@@ -72,7 +72,6 @@ if(!empty($_REQUEST['id'])){
     $sql->execute();
     $resule=$sql->fetchAll(PDO::FETCH_ASSOC);
 }else if (!empty($_REQUEST['name'])){
-    echo print_r($_REQUEST['name'], true);
     $sql=$dbh->prepare('SELECT * FROM teacher where age =:teacherid');
     $sql->bindValue(':teacherid',$_REQUEST['name'],PDO::PARAM_STR);
     $sql->execute();
