@@ -1,5 +1,5 @@
-<p>講師検索</p>
-<form action='teacher1-out.php' method='post'>
+<p>講師新規登録</p>
+<form action='tourokuoutput.php' method='post'>
 <br>名前<input type='text' name='name'></br>
 <br>フリガナ<input type='text' name='furigananame'></br>
 <br>住所<input type='text'  name='address'></br>
@@ -44,5 +44,5 @@ for ($e=1;$e<31;$e++){
 <option value='4'>英語</option>
 <option value='5'>理科</option>
 <br></select></br>
-<br><input type='submit' value='確定'><br>
+<br><input type='submit' value='登録'><br>
 </form>
