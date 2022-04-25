@@ -14,11 +14,7 @@ IDを入力してください。
 
 // エラー非表示
  //error_reporting(E_NOTICE);
-
-//if(empty($_POST["account_id"])xor($_POST["account_name"])&&($_POST["search"])){
-          //echo "キーワードを入れてください。";
-      // }
-
+     
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root', '');
 
 if(!empty($_POST['id'])or!empty($_POST['name'])){
