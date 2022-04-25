@@ -1,95 +1,118 @@
-﻿<table>
-<tr><th></th></tr>
-<tr><td></td></tr>
-
+﻿
+<table>
 <tr><th>生徒検索</th></tr>
-<form action="seitokensaku.php" method="post">
+
+<form action="sisaku.php" method="post">
+
+<?php
+//オブジェクト作成
+$pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
+?>
 	<tr><th>
-	名前
-	<td><input type="text" name="name"></td>
+	名前//テキストボックス
+	<td><input type="text" name="name"
+	value=
+	"<?php if( !empty($_POST['name']) ){ echo $_POST['name']; } ?>"></td>
 	</th></tr>
 
 	<tr><th>
-	フリガナ
-	<td><input type="text" name="furigana"></td>
+	フリガナ//テキストボックス
+	<td><input type="text" name="furigana"
+	value=
+	"<?php if( !empty($_POST['furigana']) ){ echo $_POST['furigana']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	住所
-	<td><input type="text" name="address"></td>
+	住所//テキストボックス
+	<td><input type="text" name="address"
+	value=
+	"<?php if( !empty($_POST['address']) ){ echo $_POST['address']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	電話
-	<td><input type="text" name="tell"></td>
+	電話//テキストボックス
+	<td><input type="text" name="tel"
+	value=
+	"<?php if( !empty($_POST['tel']) ){ echo $_POST['tel']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	緊急連絡先
-	<td><input type="text" name="emargency"></td>
+	緊急連絡先//テキストボックス
+	<td><input type="text" name="emargency"
+	value=
+	"<?php if( !empty($_POST['emargency']) ){ echo $_POST['emargency']; } ?>"></td>
 	</tr></th>
 
-	<tr><th>学年
-	<td><input type="text" name="year"></td>
+	<tr><th>学年//テキストボックス
+	<td><input type="text" name="year"
+	value=
+	"<?php if( !empty($_POST['year']) ){ echo $_POST['year']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	性別
+	性別//セレクトボックス
 	<td>
 	
 	<select name="sex">
 	<?php
-	$pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
-	
-	$select=$pdo->prepare("select * from sex ");
+	$select=$pdo->prepare("select * from sex");
 	$select->execute();
-
-	$result=$select->fetchAll();	
-
+	$result=$select->fetchAll();
+	//var_dump($result);
+	echo "<option value=''></option>";	
 	foreach( $result as $row)
-	{
-		
-		echo "<option value='".$row['name']."'>".$row['name']."</option>";
-		
+	{	
+		if($_REQUEST['sex']==$row["sexid"]){
+		echo "<option value='".$row['sexid']."'selected>".$row['name']."</option>";
+		}else{
+		echo "<option value='".$row['sexid']."'>".$row['name']."</option>";}
+
 	}
 	
 	?>
 	</select>
 	</td>
+	</th></tr>
+
+	<tr><th>
+	生年月日//セレクトボックス
+	<td><input type="date" name="birthday"
+	value=
+	"<?php if( !empty($_POST['birthday']) ){echo $_POST['birthday'];
+		 } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	生年月日
-	<td><input type="date" name="birthday"></td>
+	ID//テキストボックス
+	<td><input type="text" name="id"
+	value=
+	"<?php if( !empty($_POST['id']) ){ echo $_POST['id'];}
+	 ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	ID
-	<td><input type="text" name="id"></td>
-	</tr></th>
-
-	<tr><th>
-	受講コース
+	受講コース//セレクトボックス
 	<td>
+
 	<select name="course">
 	<?php
-	$pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
-	
-	$select=$pdo->prepare("SELECT * FROM courseid  ");
-//SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.id;
-	$select->execute();
-
-	$result=$select->fetchAll();	
-
+	$select=$pdo->prepare("SELECT * FROM courseid");
+	$select->execute();//sql文実行
+	$result=$select->fetchAll();
+	echo "<option value=''></option>";	
 	foreach( $result as $row)
-	{
-		
-		echo "<option value='".$row['name']."'>".$row['name']."</option>";
-		
+	{	
+		if($_REQUEST['course']==$row['id']){
+		echo "<option value='".$row['id']."'selected>".$row['name']."</option>";
+		}else{
+		echo "<option value='".$row['id']."'>".$row['name']."</option>";
+		}
+                
 	}
 	
 	?>
 	</select>
+	</td>
 	</th></tr>
 
 	<tr><th></th>
@@ -99,51 +122,73 @@
 </form>
 <?php
 
-//error_reporting(0);
+$sql=("select * from student where delete_flag=0");
+$bind=[];
+//名前テキストボックスが入っていたら
+if(!empty($_REQUEST["name"])){
+	$sql.=" and name like ?";
+	$bind[]='%'.$_REQUEST["name"].'%';
 
-$pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
+} 
+//フリガナテキストボックスが入っていたら
+if(!empty($_REQUEST["furigana"])){
+	$sql.=" and furigananame like ?";
+	$bind[]='%'.$_REQUEST["furigana"].'%';
+} 
+//住所テキストボックスが入っていたら
+if(!empty($_REQUEST["address"])){
+	$sql.=" and address like ?";
+	$bind[]='%'.$_REQUEST["address"].'%';
+} 
+//電話番号が入っていたら
+if(!empty($_REQUEST["tel"])){
+	$sql.=" and tel=?";
+	$bind[]=$_REQUEST["tel"];
+} 
+//緊急連絡先が入っていたら
+if(!empty($_REQUEST["emargency"])){
+	$sql.=" and emargencycontact=?";
+	$bind[]=$_REQUEST["emargency"];
+} 
+//学年が入っていたら
+if(!empty($_REQUEST["year"])){
+	$sql.=" and academicyear=?";
+	$bind[]=$_REQUEST["year"];
+} 
+//生年月日が入力されていたら
+if(!empty($_REQUEST["birthday"])){
+	$sql.=" and birthday=?";
+	$bind[]=$_REQUEST["birthday"];
+} 
+//IDが入っていたら
+if(!empty($_REQUEST["id"])){
+	$sql.=" and studentid=?";
+	$bind[]=$_REQUEST["id"];	
+} 
+//コースが選択されていたら
+if(!empty($_REQUEST["course"])){
+	$sql.=" and course_id=?";
+	$bind[]=$_REQUEST["course"];
+}
+//性別が選択されていたら
+if(!empty($_REQUEST["sex"])){
+	$sql.=" and sex=?";
+	$bind[]=$_REQUEST["sex"];
+}
 
-if(!empty($_REQUEST["id"]))
-	{
-		$select=$pdo->prepare("select * from student where studentid=:studentid");
-		$select->bindValue(":studentid",$_REQUEST["id"],PDO::PARAM_STR);
-		$select->execute();
-}else if(!empty($_REQUEST["course"]))
-	{
-		$select=$pdo->prepare("select * from student where course_id=:course_id");
-		$select->bindValue(":course_id",$_REQUEST["course"],PDO::PARAM_STR);
-		$select->execute();
-	
-}else if(empty($_REQUEST["course"])&&empty($_REQUEST["id"]))
-	{	
-		$sql = "select * from student where delete_flag = 0";
-		$select=$pdo->prepare($sql);
-		$select->execute();	
-	
-		/*$select=$pdo->prepare("select * from student");
-		$select->bindValue(":student",null,PDO::PARAM_NULL);
-		$select->execute();*/
-	}
+//var_dump($sql);
+$sql = $pdo->prepare($sql);
+$sql->execute($bind);
+$result=$sql->fetchAll();
 
-$result=$select->fetchAll();
-//var_dump($_REQUEST["course"]);
-/*foreach( $result as $row)
-	{
-		echo"<tr>";	
-		echo "<td>",$row['name'],"</td>";
-		echo "<td>",$row['furigananame'],"</td>";
-		echo "<td>",$row['address'],"</td>";
-		echo "<td>",$row['tel'],"</td>";
-		echo "<td>",$row['emargencycontact'],"</td>";
-		echo "<td>",$row['academicyear'],"</td>";
-		echo "<td>",$row['sex'], ":","</td>";
-		echo "<td>",$row['birthday'],"</td>";
-		echo "<td>",$row['studentid'], ":","</td>";
-		echo "<td>",$row['course_id'],"</td>";
-		echo "</tr>";
+$sex=$pdo->prepare("select * from sex");
+	$sex->execute();
+	$sexresult=$sex->fetchAll();
 
-	
-	}*/
+$course=$pdo->prepare("SELECT * FROM courseid");//オブジェクト作成
+	$course->execute();//sql文実行
+	$courseresult=$course->fetchAll();
+
 
 foreach( $result as $row)
 	{
@@ -155,17 +200,29 @@ foreach( $result as $row)
 		<td>$row[tel]</td>
 		<td>$row[emargencycontact]</td>
 		<td>$row[academicyear]</td>
-		<td>$row[sex]:</td>
 		<td>$row[birthday]</td>
-		<td>$row[studentid]:</td>
-		<td>$row[course_id]</td>
+		
 		</tr>
 
 		std;
+
+		
+		foreach( $sexresult as $srow){
+			if($row["sex"]==$srow["sexid"]){
+			echo '<td>', $srow["name"] ,'</td>';
+			}
+		}
+		
+		foreach( $courseresult as $crow){
+			if($row["course_id"]==$crow["id"]){
+			echo '<td>', $crow["name"] ,'</td>';
+			}
+		}
+		
+
 	}
 
 //echo print_r($result,true);
 
 ?>
 </table>
-
