@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../style2.css">
 </head>
 
-<bady>
+<body>
 <nav>
 	<ul class="menu">
 	<?php
