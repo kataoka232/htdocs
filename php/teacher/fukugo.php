@@ -66,6 +66,10 @@ if(!empty($_REQUEST["birthday"])){
 	$sql.=" and birthday like ?";
 	$data[]='%'.$_REQUEST["birthday"].'%';
 }
+if(!empty($_REQUEST["teacherid"])){
+	$sql.=" and teacherid like ?";
+	$data[]='%'.$_REQUEST["teacherid"].'%';
+}
 if(!empty($_REQUEST["domain"])){
 	$sql.=" and domain like ?";
 	$data[]='%'.$_REQUEST["domain"].'%';
