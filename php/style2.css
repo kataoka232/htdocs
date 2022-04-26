@@ -20,8 +20,11 @@ body {
 	width: 85%;
 	padding: 10px;
 	margin-left: auto;
-	border: 10px;
 	text-align: left;
+	position: relative; left: 20px;
+}
+.list {
+	text-align: center;
 }
 li { 
 	padding: 10px 0;
@@ -30,6 +33,12 @@ li {
 }
 a {
 	text-decoration:none; 
+}
+a:hover {
+	color: #0073bc;
+}
+a.active {
+	color: #4ca4e8;
 }
 /*p {
 	text-align: left;
