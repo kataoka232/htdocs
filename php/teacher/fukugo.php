@@ -1,5 +1,5 @@
 <p>講師検索</p>
-<form action='1.php' method='post'>
+<form action='fukugo.php' method='post'>
 <br>名前<input type='text' name='name'></br>
 <br>フリガナ<input type='text' name='furigananame'></br>
 <br>住所<input type='text'  name='address'></br>
