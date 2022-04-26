@@ -1,6 +1,5 @@
-//まだ作成中
-
 <?php require '../header.php'; ?>
+//まだ作成中
 <form action="insert.php" method="post">
 アカウント名<input type="text" name="name">
 パスワード<input type="text" name="password">

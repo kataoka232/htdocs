@@ -15,7 +15,7 @@ IDを入力してください。
 // エラー非表示
  //error_reporting(E_NOTICE);
      
-$pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root', '');
+$pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
 
 if(!empty($_POST['id'])or!empty($_POST['name'])){
 	//$stmt= $pdo->prepare('select * from account where id = ?  and name like ?');
