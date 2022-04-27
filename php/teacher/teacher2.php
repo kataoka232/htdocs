@@ -56,5 +56,6 @@ foreach ($domain_list as $subject) {
 <input type="hidden" name="birthday" value="<?php echo $_REQUEST['birthday'] ?>"/>
 <input type="hidden" name="domain" value="<?php echo $_REQUEST['domain'] ?>"/>
 
-<br><button name="regist" type="submit" value="true">登録</button></br>
+<br><button name="regist" type="submit" value="true">登録</button>
+<input type="button" onclick="history.back()" value="戻る"></br>
 </form>
