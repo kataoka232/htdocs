@@ -206,9 +206,14 @@ $sql->execute();
 
 
 ?>
+<<<<<<< HEAD
 
 <button type="submit" onclick="history.back()">戻る</button>
 </table>
 
 
 
+=======
+</table>
+
+>>>>>>> 23d2ab2acc9affafa5c3f7f2d0bc992760ad2dd9
