@@ -206,5 +206,6 @@ $sql->execute();
 
 
 ?>
-</table>
 
+<button type="submit" onclick="history.back()">戻る</button>
+</table>

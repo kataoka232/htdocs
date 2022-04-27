@@ -10,48 +10,48 @@
 $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 ?>
 	<tr><th>
-	名前//テキストボックス
+	名前
 	<td><input type="text" name="name"
 	value=
 	"<?php if( !empty($_POST['name']) ){ echo $_POST['name']; } ?>"></td>
 	</th></tr>
 
 	<tr><th>
-	フリガナ//テキストボックス
+	フリガナ
 	<td><input type="text" name="furigana"
 	value=
 	"<?php if( !empty($_POST['furigana']) ){ echo $_POST['furigana']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	住所//テキストボックス
+	住所
 	<td><input type="text" name="address"
 	value=
 	"<?php if( !empty($_POST['address']) ){ echo $_POST['address']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	電話//テキストボックス
+	電話
 	<td><input type="text" name="tel"
 	value=
 	"<?php if( !empty($_POST['tel']) ){ echo $_POST['tel']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	緊急連絡先//テキストボックス
+	緊急連絡先
 	<td><input type="text" name="emargency"
 	value=
 	"<?php if( !empty($_POST['emargency']) ){ echo $_POST['emargency']; } ?>"></td>
 	</tr></th>
 
-	<tr><th>学年//テキストボックス
+	<tr><th>学年
 	<td><input type="text" name="year"
 	value=
 	"<?php if( !empty($_POST['year']) ){ echo $_POST['year']; } ?>"></td>
 	</tr></th>
 
 	<tr><th>
-	性別//セレクトボックス
+	性別
 	<td>
 	
 	<select name="sex">
@@ -76,7 +76,7 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	</th></tr>
 
 	<tr><th>
-	生年月日//セレクトボックス
+	生年月日
 	<td><input type="date" name="birthday"
 	value=
 	"<?php if( !empty($_POST['birthday']) ){echo $_POST['birthday'];
@@ -84,7 +84,7 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	</tr></th>
 
 	<tr><th>
-	ID//テキストボックス
+	ID
 	<td><input type="text" name="id"
 	value=
 	"<?php if( !empty($_POST['id']) ){ echo $_POST['id'];}
@@ -92,7 +92,7 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	</tr></th>
 
 	<tr><th>
-	受講コース//セレクトボックス
+	受講コース
 	<td>
 
 	<select name="course">
