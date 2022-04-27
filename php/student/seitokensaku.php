@@ -176,7 +176,7 @@ if(!empty($_REQUEST["sex"])){
 	$bind[]=$_REQUEST["sex"];
 }
 
-var_dump($sql);
+//var_dump($sql);
 $sql = $pdo->prepare($sql);
 $sql->execute($bind);
 $result=$sql->fetchAll();
@@ -194,8 +194,7 @@ foreach( $result as $row)
 	{
 		echo <<<std
 		<tr>
-		<form>
-		<td><a href=student.edit.php?$row[studentid]>$row[studentid]</a></td>	
+		<td><a href="student_edit.php?$row[studentid]">$row[studentid]</a></td>	
 		<td>$row[name]</td>
 		<td>$row[furigananame]</td>
 		<td>$row[address]</td>
@@ -227,7 +226,8 @@ foreach( $result as $row)
 //echo print_r($result,true);
 
 ?>
-<form action="student.insert.php" method="post">
-<td><input type="submit" value="新規登録"></td>
-</form>
+<form action="student_insert.php" method="post">
+	<tr><th></th>
+		<td><input type="submit" value="新規登録"></td>
+	</tr>
 </table>
