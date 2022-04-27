@@ -1,4 +1,3 @@
-<?php require 'header.php'; ?>
 
 <form action="bihin_edit.php" method="post">
     <input type="submit" value="新規登録">
@@ -50,5 +49,3 @@ foreach ($result as $val) {
 
 
 </table>
-
-<?php require 'footer.php'; ?>

@@ -1,4 +1,3 @@
-<?php require 'header.php'; ?>
 
 <?php
     if (empty($_REQUEST['id'])) {
@@ -32,4 +31,3 @@
     <button type="submit" onclick="history.back()">戻る</button>
 </div>
 
-<?php require 'footer.php'; ?>

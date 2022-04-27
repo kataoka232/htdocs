@@ -1,4 +1,3 @@
-<?php require 'header.php'; ?>
 
 <h1>確認画面</h1>
 
@@ -27,5 +26,3 @@
 ?>
 
 </form>
-
-<?php require 'footer.php'; ?>
