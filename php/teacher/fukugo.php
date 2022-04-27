@@ -1,12 +1,27 @@
+<?php require 'menu.php';?>
 <p>講師検索</p>
-<form action='fukugo.php' method='post'>
-<br>名前<input type='text' name='name'></br>
-<br>フリガナ<input type='text' name='furigananame'></br>
-<br>住所<input type='text'  name='address'></br>
-<br>電話<input type='text'  name='tel'></br>
-<br>緊急連絡先<input type='text' name='emergencycontact'></br>
-<br>年齢<input type='text' name='age'></br>
-<br>性別<select name='sex'></br>
+<form action='fukugo.php' method='post' >
+<br>名前<input type='text' name='name' value=
+"<?php if( !empty($_REQUEST['name']) ){echo $_REQUEST['name'];
+} ?>"></br>
+<br>フリガナ<input type='text' name='furigananame' value=
+"<?php if( !empty($_REQUEST['furigananame']) ){echo $_REQUEST['furigananame'];
+} ?>"></br>
+<br>住所<input type='text'  name='address' value=
+"<?php if( !empty($_REQUEST['address']) ){echo $_REQUEST['address'];
+} ?>"></br>
+<br>電話<input type='text'  name='tel'value=
+"<?php if( !empty($_REQUEST['tel']) ){echo $_REQUEST['tel'];
+} ?>"></br>
+<br>緊急連絡先<input type='text' name='emergencycontact'value=
+"<?php if( !empty($_REQUEST['emergencycontact']) ){echo $_REQUEST['emergencycontact'];
+} ?>"></br>
+<br>年齢<input type='text' name='age' value=
+"<?php if( !empty($_REQUEST['age']) ){echo $_REQUEST['age'];
+} ?>"></br>
+<br>性別<select name='sex' value=
+"<?php if( !empty($_REQUEST['sex']) ){echo $_REQUEST['sex'];
+} ?>"></br>
 <option value=""></option>
 <option value='1'>男</option>
 <option value='2'>女</option>
@@ -15,8 +30,12 @@
 <input type="date" name="birthday" value=
 "<?php if( !empty($_POST['birthday']) ){echo $_POST['birthday'];
 } ?>"></br>
-<br>ID<input type='text' name='id'></br>
-<br>担当科目<select name='domain'></br>
+<br>ID<input type='text' name='id' value=
+"<?php if( !empty($_REQUEST['id']) ){echo $_REQUEST['id'];
+} ?>"></br>
+<br>担当科目<select name='domain' value=
+"<?php if( !empty($_REQUEST['domain']) ){echo $_REQUEST['domain'];
+} ?>"></br>
 <option></option>
 <option value='1'>国語</option>
 <option value='2'>数学</option>
@@ -66,6 +85,10 @@ if(!empty($_REQUEST["birthday"])){
 	$sql.=" and birthday like ?";
 	$data[]='%'.$_REQUEST["birthday"].'%';
 }
+if(!empty($_REQUEST["id"])){
+	$sql.=" and teacherid like ?";
+	$data[]='%'.$_REQUEST["id"].'%';
+}
 if(!empty($_REQUEST["domain"])){
 	$sql.=" and domain like ?";
 	$data[]='%'.$_REQUEST["domain"].'%';
@@ -87,6 +110,7 @@ $domain_list  = $domain_obj->fetchAll(PDO::FETCH_ASSOC);
 
    
 foreach ($result as $teacher){
+    echo '<p>';
     echo '<tr>';
     echo '<td>',$teacher['teacherid'],'</td>';
     echo '<td>',$teacher['name'],'</td>';
@@ -107,5 +131,6 @@ foreach ($result as $teacher){
             }
         }
     echo '</tr>';
+    echo '</p>';
 }
 ?>
