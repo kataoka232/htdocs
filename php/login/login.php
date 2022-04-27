@@ -9,6 +9,11 @@ body {
 }
 form {
 	text-align: center;
+	width: 400px;
+	height: 140px;
+	padding-top: 15px; 
+	margin: 20px 200px;
+	border: 1px solid #ccc;
 }
 input {
 	margin: 10px;
