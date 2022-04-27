@@ -12,7 +12,7 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	名前//テキストボックス
 	<td><input type="text" name="name"
 	value=
-	"<?php if( !empty($_POST['name']) ){ echo $_POST['name']; } ?>"></td>
+	"<?php if(!empty($_POST['name']) ){ echo $_POST['name']; } ?>"></td>
 	</th></tr>
 
 	<tr><th>
@@ -59,7 +59,7 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	$select->execute();
 	$result=$select->fetchAll();
 	//var_dump($result);
-	echo "<option value=''></option>";	
+	echo "<option value=''></option>";
 	foreach( $result as $row)
 	{	
 		if($_REQUEST['sex']==$row["sexid"]){

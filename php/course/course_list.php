@@ -4,7 +4,7 @@
 <p>コース名：</p>
 <?php
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
-foreach($pdo->query('select * from courseid where delete_flg is null') as $course) {
+foreach($pdo->query('select * from courseid where delete_flg = 0') as $course) {
 	echo '<nobr>';
 	echo '<tr>';
 	echo '<td>',$course['name'],'</td>';
