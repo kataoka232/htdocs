@@ -1,4 +1,6 @@
-<p>コース編集</p>
+<?php require '../menu.php'; ?>
+
+<h1>コース編集</h1>
 <?php
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
 if (isset($_REQUEST['command'])) {

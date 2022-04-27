@@ -1,4 +1,6 @@
-<p>講師検索</p>
+<?php require '../menu.php'; ?>
+
+<h1>講師検索</h1>
 <form action='teacher1-out.php' method='post'>
 <br>名前<input type='text' name='name'></br>
 <br>フリガナ<input type='text' name='furigananame'></br>
