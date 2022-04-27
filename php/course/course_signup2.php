@@ -1,6 +1,8 @@
+<?php require '../menu.php'; ?>
+
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
-$sql = $pdo->prepare ('select * from courseid where name=:name');
+$sql = $pdo->prepare ('select * from courseid where name=:name and delete_flg is null');
 $sql->bindValue(':name',$_REQUEST['name'],PDO::PARAM_STR);
 $sql->execute();
 $result = $sql->fetch();

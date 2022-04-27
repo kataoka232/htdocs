@@ -1,6 +1,5 @@
 <?php require '../menu.php'; ?>
-
-<h1>コース編集</h1>
+<p>アカウント編集</p>
 <?php
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
 if (isset($_REQUEST['command'])) {
@@ -8,25 +7,27 @@ if (isset($_REQUEST['command'])) {
 	case 'update':
 		if (empty($_REQUEST['name']) ||
 			!preg_match('/[0-9]+/',$_REQUEST['id'])) break;
-		$sql=$pdo->prepare('update courseid set name=? where id=?');
+		$sql=$pdo->prepare('update account set name=?, password=? where id=?');
 		$sql->execute(
-			[htmlspecialchars($_REQUEST['name']),$_REQUEST['id']]);
+			[htmlspecialchars($_REQUEST['name']),$_REQUEST['id'],$_REQUEST['password']]);
 		break;
 	case 'delete':
-		$sql=$pdo->prepare('delete from courseid where id=?');
+		$sql=$pdo->prepare('delete from account where id=?');
 		$sql->execute([$_REQUEST['id']]);
 		break;
 	}
 }
-$sql=$pdo->prepare('select * from courseid where id=?');
+$sql=$pdo->prepare('select * from account where id=?');
 $sql->execute([$_REQUEST['id']]);
-foreach ($sql as $course) {
-	echo '<form class"ib" action="course_edit_update.php" method="post">';
+foreach ($sql as $account) {
+	echo '<form class"ib" action="update.php" method="post">';
 	echo '<input type="hidden" name="command" value="update">';
-	echo '<input type="hidden" name="id" value="',$course['id'],'">';
-	echo 'コースID：',$course['id'];
+	echo '<input type="hidden" name="id" value="',$account['id'],'">';
+	echo 'アカウントID：',$account['id'];
 	echo '<br>';
-	echo 'コース名：<input type="text" name="name" value="',$course['name'],'">';
+	echo '名前：<input type="text" name="name" value="',$account['name'],'">';
+	echo '<br>';
+    echo 'パスワード：<input type="text" name="password" value="',$account['password'],'">';
 	echo '<br>';
 	echo '<br>';
 	echo '<input type="button" onclick="history.back()" value="戻る">';
@@ -35,9 +36,9 @@ foreach ($sql as $course) {
 	echo "\t";
 	echo '<div style="display:inline-flex">';
 	echo '</form>';
-	echo '<form class="ib" action="course_edit_delete.php" method="post">';
+	echo '<form class="ib" action="delete.php" method="post">';
 	echo '<input type="hidden" name="command" value="delete">';
-	echo '<input type="hidden" name="id" value="',$course['id'],'">';
+	echo '<input type="hidden" name="id" value="',$account['id'],'">';
 	echo '<input type="submit" value="削除">';
 	echo '</form>';
 	echo '</div>';
