@@ -8,7 +8,7 @@
 <br>緊急連絡先<input type='text' name='emergencycontact'></br>
 <br>年齢<input type='text' name='age'></br>
 <br>性別<select name='sex'></br>
-<option value="">-</option>
+<option value=""></option>
 <option value='1'>男</option>
 <option value='2'>女</option>
 <br></select></br>
@@ -17,7 +17,7 @@
 "<?php if( !empty($_POST['birthday']) ){echo $_POST['birthday'];
 } ?>"></br>
 <br>担当科目<select name='domain'></br>
-<option>-</option>
+<option></option>
 <option value='1'>国語</option>
 <option value='2'>数学</option>
 <option value='3'>社会</option>
