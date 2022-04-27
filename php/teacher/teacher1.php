@@ -1,7 +1,7 @@
 <?php require '../menu.php'; ?>
 
 <p>講師登録</p>
-<form action='teacher1-out.php' method='post'>
+<form action='teacher2.php' method='post'>
 <br>名前<input type='text' name='name'></br>
 <br>フリガナ<input type='text' name='furigananame'></br>
 <br>住所<input type='text'  name='address'></br>
@@ -13,32 +13,12 @@
 <option value='1'>男</option>
 <option value='2'>女</option>
 <br></select></br>
-<br>生年月日<select name='year'></br>
-<option>-</option>
-<?php
-for ($i=2022;$i>1900;$i--){
-   echo '<option value="',$i,'">',$i,'</option>';
-}
-?>
-</select>年
-<select name='month'>
-<option>-</option>
-<?php
-for ($q=1;$q<13;$q++){
-   echo '<option value="',$q,'">',$q,'</option>';
-}
-?>
-</select>月
-<select name='day'>
-<option>-</option>
-<?php
-for ($e=1;$e<31;$e++){
-   echo '<option value="',$e,'">',$e,'</option>';
-}
-?>
-<br></select>日</br>
+<br>生年月日
+<input type="date" name="birthday" value=
+"<?php if( !empty($_POST['birthday']) ){echo $_POST['birthday'];
+} ?>"></br>
 <br>ID<input type='text' name='id'></br>
-<br>担当科目<select name='suject'></br>
+<br>担当科目<select name='domain'></br>
 <option>-</option>
 <option value='1'>国語</option>
 <option value='2'>数学</option>
