@@ -2,7 +2,7 @@
 <table>
 <tr><th>生徒検索</th></tr>
 
-<form action="sisaku.php" method="post">
+<form action="seitokensaku.php" method="post">
 
 <?php
 //オブジェクト作成
@@ -176,7 +176,7 @@ if(!empty($_REQUEST["sex"])){
 	$bind[]=$_REQUEST["sex"];
 }
 
-//var_dump($sql);
+var_dump($sql);
 $sql = $pdo->prepare($sql);
 $sql->execute($bind);
 $result=$sql->fetchAll();
@@ -193,7 +193,9 @@ $course=$pdo->prepare("SELECT * FROM courseid");//オブジェクト作成
 foreach( $result as $row)
 	{
 		echo <<<std
-		<tr>	
+		<tr>
+		<form>
+		<td><a href=student.edit.php?$row[studentid]>$row[studentid]</a></td>	
 		<td>$row[name]</td>
 		<td>$row[furigananame]</td>
 		<td>$row[address]</td>
@@ -225,4 +227,7 @@ foreach( $result as $row)
 //echo print_r($result,true);
 
 ?>
+<form action="student.insert.php" method="post">
+<td><input type="submit" value="新規登録"></td>
+</form>
 </table>
