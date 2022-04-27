@@ -1,3 +1,4 @@
+<?php require 'menu.php';?>
 <h2>講師個人情報一覧表</h2>
 <table>
 <tr><th>ID</th><th>名前</th><th>フリガナ名前</th><th>住所</th><th>電話番号</th><th>緊急連絡先</th><th>年齢</th><th>性別</th><th>生年月日</th><th>分野</th></tr>
