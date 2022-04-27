@@ -1,3 +1,4 @@
+<?php require '../menu.php'; ?>
 
 <h1>確認画面</h1>
 

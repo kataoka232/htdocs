@@ -1,3 +1,4 @@
+<?php require '../menu.php'; ?>
 
 <?php
     if (empty($_REQUEST['id'])) {
