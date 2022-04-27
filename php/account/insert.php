@@ -1,4 +1,5 @@
 <?php require '../menu.php'; ?>
+
 <form action="insert.php" method="post">
 アカウント名<input type="text" name="name"><br>
 パスワード<input type="text" name="password"><br>

@@ -8,6 +8,7 @@ if ($sql->execute()) {
 } else {
 	echo '削除できませんでした。';
 }
+
 ?>
 <br>
 <br>
