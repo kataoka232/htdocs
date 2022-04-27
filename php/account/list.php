@@ -1,4 +1,5 @@
 <?php session_start();?>
+
 <?php require '../menu.php'; ?>
 <p>アカウント一覧</p>
 <p>アカウント名：</p><br>
