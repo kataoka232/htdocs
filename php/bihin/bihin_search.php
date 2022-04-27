@@ -1,3 +1,4 @@
+<?php require '../menu.php'; ?>
 
 <form action="bihin_edit.php" method="post">
     <input type="submit" value="新規登録">

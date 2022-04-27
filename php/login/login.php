@@ -26,7 +26,7 @@ input {
 アカウント名:<input type="text" name="name"><br>
 パスワード:<input type="password" name="password"><br>
 <input type="submit" value="ログイン">
-<input type="button" onclick="location.href='../account/.php'" value="アカウント新規登録">
+<input type="button" onclick="location.href='../account/insert.php'" value="アカウント新規登録">
 </form>
 
 <?php require '../footer.php'; ?>
