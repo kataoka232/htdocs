@@ -2,7 +2,7 @@
 <table>
 <tr><th>生徒検索</th></tr>
 
-<form action="seitokensaku.php" method="post">
+<form action="student_insert.php" method="post">
 
 <?php
 //オブジェクト作成
@@ -82,14 +82,7 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 		 } ?>"></td>
 	</tr></th>
 
-	<tr><th>
-	ID//テキストボックス
-	<td><input type="text" name="id"
-	value=
-	"<?php if( !empty($_POST['id']) ){ echo $_POST['id'];}
-	 ?>"></td>
-	</tr></th>
-
+	
 	<tr><th>
 	受講コース//セレクトボックス
 	<td>
@@ -116,118 +109,106 @@ $pdo=new PDO("mysql:host=localhost;dbname=juku;charset=utf8","root","");
 	</th></tr>
 
 	<tr><th></th>
-		<td><input type="submit" value="検索"></td>
+		<td><input type="submit" value="登録"></td>
 	</tr>
 
 </form>
 <?php
 
-$sql=("select * from student where delete_flag=0");
-$bind=[];
+
+
+//配列設定
+$bind=["0"=>"name","1"=>"furigananame","2"=>"address","3"=>"tel","4"=>"emargencycontact","5"=>"academicyear",
+"6"=>"birthday","7"=>"course_id","8"=>"sex"];
 //名前テキストボックスが入っていたら
 if(!empty($_REQUEST["name"])){
-	$sql.=" and name like ?";
-	$bind[]='%'.$_REQUEST["name"].'%';
-
-} 
+	$bind["name"]=$_REQUEST["name"];
+}elseif(empty($_REQUEST["name"]))
+{
+$bind["name"]=NULL; 
+}
 //フリガナテキストボックスが入っていたら
 if(!empty($_REQUEST["furigana"])){
-	$sql.=" and furigananame like ?";
-	$bind[]='%'.$_REQUEST["furigana"].'%';
-} 
+	$bind["furigananame"]=$_REQUEST["furigana"];
+}elseif(empty($_REQUEST["furigana"]))
+{
+$bind["furigananame"]=NULL; 
+}
 //住所テキストボックスが入っていたら
 if(!empty($_REQUEST["address"])){
-	$sql.=" and address like ?";
-	$bind[]='%'.$_REQUEST["address"].'%';
-} 
+	$bind["address"]=$_REQUEST["address"];
+} elseif(empty($_REQUEST["address"]))
+{
+$bind["address"]=NULL;
+}
 //電話番号が入っていたら
 if(!empty($_REQUEST["tel"])){
-	$sql.=" and tel=?";
-	$bind[]=$_REQUEST["tel"];
+	$bind["tel"]=$_REQUEST["tel"];
+} elseif(empty($_REQUEST["tel"]))
+{
+$bind["tel"]=NULL;
 } 
 //緊急連絡先が入っていたら
 if(!empty($_REQUEST["emargency"])){
-	$sql.=" and emargencycontact=?";
-	$bind[]=$_REQUEST["emargency"];
+	$bind["emargencycontact"]=$_REQUEST["emargency"];
+} elseif(empty($_REQUEST["emargency"]))
+{
+$bind["emargencycontact"]=NULL;
 } 
 //学年が入っていたら
 if(!empty($_REQUEST["year"])){
-	$sql.=" and academicyear=?";
-	$bind[]=$_REQUEST["year"];
+	$bind["academicyear"]=$_REQUEST["year"];
+} elseif(empty($_REQUEST["year"]))
+{
+$bind["academicyear"]=NULL;
 } 
 //生年月日が入力されていたら
 if(!empty($_REQUEST["birthday"])){
-	$sql.=" and birthday=?";
-	$bind[]=$_REQUEST["birthday"];
-} 
+	$bind["birthday"]=$_REQUEST["birthday"];
+}elseif(empty($_REQUEST["birthday"])){
+$bind["birthday"]=NULL;
+}
 //IDが入っていたら
 if(!empty($_REQUEST["id"])){
-	$sql.=" and studentid=?";
 	$bind[]=$_REQUEST["id"];	
 } 
 //コースが選択されていたら
 if(!empty($_REQUEST["course"])){
-	$sql.=" and course_id=?";
-	$bind[]=$_REQUEST["course"];
+	$bind["course_id"]=$_REQUEST["course"];
 }
 //性別が選択されていたら
 if(!empty($_REQUEST["sex"])){
-	$sql.=" and sex=?";
-	$bind[]=$_REQUEST["sex"];
+	$bind["sex"]=$_REQUEST["sex"];
 }
 
-//var_dump($sql);
-$sql = $pdo->prepare($sql);
-$sql->execute($bind);
-$result=$sql->fetchAll();
-
-$sex=$pdo->prepare("select * from sex");
-	$sex->execute();
-	$sexresult=$sex->fetchAll();
-
-$course=$pdo->prepare("SELECT * FROM courseid");//オブジェクト作成
-	$course->execute();//sql文実行
-	$courseresult=$course->fetchAll();
+	print_r('<pre>');
+	print_r($bind);
+	print_r('</pre>');
 
 
-foreach( $result as $row)
-	{
-		echo <<<std
-		<tr>
-		<td><a href="student_edit.php?$row[studentid]">$row[studentid]</a></td>	
-		<td>$row[name]</td>
-		<td>$row[furigananame]</td>
-		<td>$row[address]</td>
-		<td>$row[tel]</td>
-		<td>$row[emargencycontact]</td>
-		<td>$row[academicyear]</td>
-		<td>$row[birthday]</td>
-		
-		</tr>
+if(empty($_REQUEST["course"])){
 
-		std;
+echo "登録に失敗しました";
+}else{
+$sql = $pdo->prepare("insert into student(academicyear,address,birthday,course_id,emargencycontact,furigananame,name,sex,tel) 
+values(:academicyear,:address,:birthday,:course_id,:emargencycontact,:furigananame,:name,:sex,:tel)");
+$sql->bindValue(":name",$bind["name"],PDO::PARAM_STR);
+$sql->bindValue(":furigananame",$bind["furigananame"],PDO::PARAM_STR);
+$sql->bindValue(":address",$bind["address"],PDO::PARAM_STR);
+$sql->bindValue(":tel",$bind["tel"],PDO::PARAM_STR);
+$sql->bindValue(":emargencycontact",$bind["emargencycontact"],PDO::PARAM_STR);
+$sql->bindValue(":academicyear",$bind["academicyear"],PDO::PARAM_STR);
+$sql->bindValue(":birthday",$bind["birthday"],PDO::PARAM_STR);
+$sql->bindValue(":course_id",$bind["course_id"],PDO::PARAM_STR);
+$sql->bindValue(":sex",$bind["sex"],PDO::PARAM_STR);
+$sql->execute();
+}
 
-		
-		foreach( $sexresult as $srow){
-			if($row["sex"]==$srow["sexid"]){
-			echo '<td>', $srow["name"] ,'</td>';
-			}
-		}
-		
-		foreach( $courseresult as $crow){
-			if($row["course_id"]==$crow["id"]){
-			echo '<td>', $crow["name"] ,'</td>';
-			}
-		}
-		
-
-	}
-
-//echo print_r($result,true);
 
 ?>
-<form action="student_insert.php" method="post">
-	<tr><th></th>
-		<td><input type="submit" value="新規登録"></td>
-	</tr>
+
+<button type="submit" onclick="history.back()">戻る</button>
 </table>
+
+
+
