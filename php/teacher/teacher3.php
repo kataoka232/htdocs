@@ -26,7 +26,7 @@ if (!empty($_REQUEST['sex'])){
    $sex_obj     -> execute();
    $sex_list     = $sex_obj->fetchAll(PDO::FETCH_ASSOC);
    foreach ($sex_list as $sex) {
-		    if ($_REQUEST['sex']==$sex['id']) {
+		    if ($_REQUEST['sex']==$sex['sexid']) {
 		        echo '<td>',$sex['name'] ,'</td>';
 		    }
 	    }
