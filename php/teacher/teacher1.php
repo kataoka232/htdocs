@@ -17,7 +17,6 @@
 <input type="date" name="birthday" value=
 "<?php if( !empty($_POST['birthday']) ){echo $_POST['birthday'];
 } ?>"></br>
-<br>ID<input type='text' name='id'></br>
 <br>担当科目<select name='domain'></br>
 <option>-</option>
 <option value='1'>国語</option>
