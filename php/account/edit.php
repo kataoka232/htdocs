@@ -31,9 +31,9 @@ foreach ($sql as $account) {
     echo 'パスワード：<input type="text" name="password" value="',$account['password'],'">';
 	echo '<br>';
 	echo '<br>';
-	echo '<input type="button" onclick="history.back()" value="戻る">';
+	echo '<input type="button" onclick="history.back()" value="戻る">','&emsp;';
 	echo "\t";
-	echo '<input type="submit" value="変更">';
+	echo '<input type="submit" value="変更">','&emsp;';
 	echo "\t";
 	echo '<div style="display:inline-flex">';
 	echo '</form>';
@@ -45,3 +45,4 @@ foreach ($sql as $account) {
 	echo '</div>';
 }
 ?>
+<input type="button" onclick="location.href='./list.php'" value="リストに戻る">

@@ -16,13 +16,14 @@ $sql->execute([$_REQUEST['id']]);
 			echo 'アカウント名：',$account['name'];
 			echo '<br>';
 			echo '<br>';
-			echo '<input type="button" onclick="history.back()" value="戻る">';
+			echo '<input type="button" onclick="history.back()" value="戻る">','&emsp;';
 			echo "\t";
-			echo '<input type="submit" value="削除">';
+			echo '<input type="submit" value="削除">','<br>';
 			echo '</form>';
 		}   
 }           else {
-            echo 'アカウントが登録されていません。','<br>';
-            echo '<input type="button" onclick="history.back()" value="戻る">';
+            echo 'アカウントが登録されていません。';
+            echo '<input type="button" onclick="history.back()" value="戻る">','<br>';
             }
 ?>
+<input type="button" onclick="location.href='./list.php'" value="リストに戻る">
