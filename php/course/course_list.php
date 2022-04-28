@@ -1,8 +1,12 @@
 <?php require '../menu.php'; ?>
 
-<h1>コース一覧</h1>
+<header>
+<h1 class="midashi">コース一覧</h1>
+</header>
+<div class="list_btn">
 <input type="button" onclick="location.href='./course_search.php'" value="コース検索">
 <input type="button" onclick="location.href='./course_signup.php'" value="新規登録"><br><br>
+</div>
 
 <p>コース名：</p>
 <?php
