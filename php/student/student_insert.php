@@ -1,6 +1,6 @@
 ﻿
 <table>
-<tr><th>生徒検索</th></tr>
+<tr><th>新規登録</th></tr>
 
 <form action="student_insert.php" method="post">
 

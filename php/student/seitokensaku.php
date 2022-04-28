@@ -192,10 +192,11 @@ $course=$pdo->prepare("SELECT * FROM courseid");//オブジェクト作成
 
 
 foreach( $result as $row)
-	{
+	{	
 		echo <<<std
 		<tr>
-		<td><a href="student_edit.php?$row[studentid]">$row[studentid]</a></td>	
+		<td>$row[studentid]</td>
+		<td><a href=student_edit.php?id=$row[studentid]>$row[studentid]</a></td>	
 		<td>$row[name]</td>
 		<td>$row[furigananame]</td>
 		<td>$row[address]</td>

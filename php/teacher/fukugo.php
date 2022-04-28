@@ -121,7 +121,7 @@ foreach ($result as $teacher){
     echo '<td>',$teacher['emergencycontact'],'</td>';
     echo '<td>',$teacher['age'],'</td>';
         foreach ($sex_list as $sex) {
-		    if ($teacher['sex']==$sex['id']) {
+		    if ($teacher['sex']==$sex['sexid']) {
 		        echo '<td>',$sex['name'] ,'</td>';
 		    }
 	    }
