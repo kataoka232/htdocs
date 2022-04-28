@@ -2,7 +2,7 @@
 <table>
 <tr><th>生徒検索</th></tr>
 
-<form action="student.insert.php" method="post">
+<form action="student_insert.php" method="post">
 
 <?php
 //オブジェクト作成
@@ -206,5 +206,6 @@ $sql->execute();
 
 
 ?>
-</table>
 
+<button type="submit" onclick="history.back()">戻る</button>
+</table>
