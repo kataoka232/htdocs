@@ -1,4 +1,14 @@
 @charset "UTF-8";
+html {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-size: 100%;
+	background: transparent;
+	box-sizing: border-box; 
+}
 body {
 	font-family: sans-serif;
 	line-height: 1.7;
@@ -7,7 +17,7 @@ body {
 .menu {
 	float: left;
 	width: 20%;
-	height: 100%;
+	height: 20px;
 	margin: 0 0 20px 0;
 	background-color: #ffce5b;
 	list-style: none;
@@ -18,17 +28,17 @@ body {
 .main {
 	display: block;
 	width: 85%;
-	padding: 10px;
+	padding: 0;
 	margin-left: auto;
 	text-align: left;
 	position: relative; left: 20px;
 }
-.list {
-	text-align: center;
-}
 li { 
 	padding: 10px 0;
 	height: 20px;
+	text-align: center;
+}
+.list {
 	text-align: center;
 }
 a {
@@ -43,8 +53,17 @@ a.active {
 /*p {
 	text-align: left;
 }*/
-h1 {
+.midashi {
 	text-align: left;
 	font-size: 20px;
-	margin: 10px;
+	padding: 10px;
+	margin: 0;
+}
+.list_btn {
+	display: inline-block; 
+	height: 25px;
+	color: #0000cd;
+	box-shadow: 1px 1px 2px #b0c4de; 
+	cursor: pointer;
+	font-size: 15px;
 }
