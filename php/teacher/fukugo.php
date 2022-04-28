@@ -1,3 +1,4 @@
+<?php require '../menu.php'; ?>
 <?php require 'menu.php';?>
 <p>講師検索</p>
 <form action='fukugo.php' method='post' >
