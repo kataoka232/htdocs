@@ -44,7 +44,8 @@
 <option value='4'>英語</option>
 <option value='5'>理科</option>
 <br></select></br>
-<br><input type='submit' value='確定'><br>
+<br><input type='submit' value='確定'>
+<button type="submit" onclick="history.back()">戻る</button><br>
 </form>
 
 <?php
@@ -121,7 +122,7 @@ foreach ($result as $teacher){
     echo '<td>',$teacher['emergencycontact'],'</td>';
     echo '<td>',$teacher['age'],'</td>';
         foreach ($sex_list as $sex) {
-		    if ($teacher['sex']==$sex['id']) {
+		    if ($teacher['sex']==$sex['sexid']) {
 		        echo '<td>',$sex['name'] ,'</td>';
 		    }
 	    }
@@ -135,3 +136,4 @@ foreach ($result as $teacher){
     echo '</p>';
 }
 ?>
+

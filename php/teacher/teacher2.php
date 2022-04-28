@@ -30,7 +30,7 @@ if (!empty($_REQUEST['age'])){
 echo '<br>',"年齢:",$_REQUEST['age'],'</br>';
 }
 foreach ($sex_list as $sex) {
-    if ($_REQUEST['sex']==$sex['id']) {
+    if ($_REQUEST['sex']==$sex['sexid']) {
 		echo '<br>','<td>',"性別：",$sex['name'] ,'</td>','</br>';
     }
 }
