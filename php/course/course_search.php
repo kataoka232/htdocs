@@ -1,10 +1,10 @@
 <?php require '../menu.php'; ?>
 
-<h1>コース検索</h1>
+<h1 class="midashi">コース検索</h1>
 <form action="course_search.php" method="post">
 コースID：<input type="text" name="id">
 コース名：<input type="text" name="name">
-<input type="submit" value="検索">
+<input class=btn1 type="submit" value="検索">
 </form><br>
 
 <table>
@@ -47,4 +47,4 @@ foreach ($sql as $course) {
 </table>
 <br>
 <br>
-<input type="button" onclick="location.href='./course_list.php'" value="リストに戻る">
+<input class="btn2" type="button" onclick="location.href='./course_list.php'" value="リストに戻る">
