@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <title>Juku system</title>
 <link rel="stylesheet" href="../style2.css">
+<link rel="stylesheet" href="../serugata.css">
+
 </head>
 
-<body>
+<bady>
 <nav>
 	<ul class="menu">
 	<?php

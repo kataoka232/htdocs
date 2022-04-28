@@ -6,8 +6,9 @@ IDを入力してください。
 <input type="text" name="id"   value="<?php if( !empty($_POST['id']) ){ echo $_POST['id'];}?>"><br>
 アカウント名を入力してください。<br>
 <input type="text" name="name" value="<?php if( !empty($_POST['name']) ){ echo $_POST['name'];}?>"><br>
-<input type="submit" value="検索">
-<input type="button" onclick="history.back()" value="戻る"><br><br><br>
+<input type="submit" value="検索">&emsp;
+<input type="button" onclick="history.back()" value="戻る">&emsp;
+<input type="button" onclick="location.href='./list.php'" value="一覧に戻る"><br>
 <input type="hidden" name="search" value=1>
 
 <?php
@@ -46,14 +47,14 @@ if(!empty($_POST['id'])or!empty($_POST['name'])){
 	//$sql->execute(['%'.$_REQUEST['keyword'].'%']);
 
 	foreach ($result as $row) {
+        echo '<p>';
 		echo '<tr>';
+        echo '<"　　">';
 		echo '<td>', $row['id'], '</td>';
         echo '<td>', "　"   ,'</td>';
 		echo '<td>', $row['name'], '</td>';
-        echo '<td>', "　"   ,'</td>';
-		echo '<td>', $row['password'], '</td>','<br>';
-        echo '<td>', "　"   ,'</td>';
 		echo '</tr>';
+        echo '</p>';
 		echo "\n";
 	}
 } else {
@@ -63,14 +64,14 @@ if(!empty($_POST['id'])or!empty($_POST['name'])){
 	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	foreach ($result as $row) {
+        echo '<p>';
 		echo '<tr>';
+        echo '<"　　">';
 		echo '<td>', $row['id'], '</td>';
         echo '<td>', "　"   ,'</td>';
 		echo '<td>', $row['name'], '</td>';
-        echo '<td>', "　"   ,'</td>';
-		echo '<td>', $row['password'], '</td>','<br>';
-        echo '<td>', "  "   ,'</td>';
 		echo '</tr>';
+        echo '</p>';
 		echo "\n";
 	   }
 }
@@ -79,7 +80,5 @@ if(!empty($_POST['id'])or!empty($_POST['name'])){
 
 ?>
 </html>
-
-
 </form>
 <?php require '../footer.php'; ?>
