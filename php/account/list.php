@@ -1,4 +1,5 @@
 <?php session_start();?>
+
 <?php require '../menu.php'; ?>
 <p>アカウント一覧</p>
 <p>アカウント名：</p><br>
@@ -15,5 +16,6 @@ foreach($pdo->query('select * from account where delete_flg = 0') as $account) {
 }
 ?><br>
 <input type="button" onclick="location.href='./insert.php'" value="新規登録">
+<input type="button" onclick="location.href='./itiran_kensaku.php'" value="検索">
 <?php require '../footer.php'; ?>
  
