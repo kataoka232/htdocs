@@ -1,6 +1,6 @@
 <?php require '../menu.php'; ?>
 
-<h1>コース編集</h1>
+<h1 class="midashi">コース編集</h1>
 <?php
 $pdo=new PDO('mysql:host=localhost;dbname=juku;charset=utf8','root');
 if (isset($_REQUEST['command'])) {
@@ -29,16 +29,16 @@ foreach ($sql as $course) {
 	echo 'コース名：<input type="text" name="name" value="',$course['name'],'">';
 	echo '<br>';
 	echo '<br>';
-	echo '<input type="button" onclick="history.back()" value="戻る">';
+	echo '<input class="btn1" type="button" onclick="history.back()" value="戻る">';
 	echo "\t";
-	echo '<input type="submit" value="変更">';
+	echo '<input class="btn2" type="submit" value="変更">';
 	echo "\t";
 	echo '<div style="display:inline-flex">';
 	echo '</form>';
 	echo '<form class="ib" action="course_edit_delete.php" method="post">';
 	echo '<input type="hidden" name="command" value="delete">';
 	echo '<input type="hidden" name="id" value="',$course['id'],'">';
-	echo '<input type="submit" value="削除">';
+	echo '<input class="btn3" type="submit" value="削除">';
 	echo '</form>';
 	echo '</div>';
 }
